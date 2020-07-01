@@ -19,41 +19,41 @@ Route::view('/servicios', 'services')->name('services');
 Route::view('/preguntas-frecuentes', 'faq')->name('faq'); 
 Route::view('/', 'welcome');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
 Route::get('/categorias', 'CategoryController@index')->middleware('auth')->name('category.index');
-Route::get('/categorias/create', 'CategoryController@create')->name('category.create');
-Route::post('/categorias', 'CategoryController@store')->name('category.store');
-Route::get('/categorias/{category}/edit', 'CategoryController@edit')->name('category.edit');
-Route::put('/categorias/{category}', 'CategoryController@update')->name('category.update');
-Route::delete('/categorias/{category}', 'CategoryController@destroy')->name('category.destroy');
+Route::get('/categorias/create', 'CategoryController@create')->middleware('auth')->name('category.create');
+Route::post('/categorias', 'CategoryController@store')->middleware('auth')->name('category.store');
+Route::get('/categorias/{category}/edit', 'CategoryController@edit')->middleware('auth')->name('category.edit');
+Route::put('/categorias/{category}', 'CategoryController@update')->middleware('auth')->name('category.update');
+Route::delete('/categorias/{category}', 'CategoryController@destroy')->middleware('auth')->name('category.destroy');
 
-Route::get('/productos', 'ProductController@index')->name('product.index');
-Route::get('/productos/create', 'ProductController@create')->name('product.create');
-Route::post('/productos', 'ProductController@store')->name('product.store');
-Route::get('/productos/{product}/edit', 'ProductController@edit')->name('product.edit');
-Route::put('/productos/{product}', 'ProductController@update')->name('product.update');
+Route::get('/productos', 'ProductController@index')->middleware('auth')->name('product.index');
+Route::get('/productos/create', 'ProductController@create')->middleware('auth')->name('product.create');
+Route::post('/productos', 'ProductController@store')->middleware('auth')->name('product.store');
+Route::get('/productos/{product}/edit', 'ProductController@edit')->middleware('auth')->name('product.edit');
+Route::put('/productos/{product}', 'ProductController@update')->middleware('auth')->name('product.update');
 Route::delete('/productos/{product}', 'ProductController@destroy')->name('product.destroy');
 
-Route::get('/chanchitas', 'ChanchitaController@index')->name('chanchita.index');
-Route::get('/chanchitas/create', 'ChanchitaController@create')->name('chanchita.create');
-Route::post('/chanchitas', 'ChanchitaController@store')->name('chanchita.store');
-Route::get('/chanchitas/{chanchita}', 'ChanchitaController@show')->name('chanchita.show');
-Route::get('/chanchitas/{chanchita}/edit', 'ChanchitaController@edit')->name('chanchita.edit');
-Route::put('/chanchitas/{chanchita}', 'ChanchitaController@update')->name('chanchita.update');
-Route::delete('/chanchitas/{chanchita}', 'ChanchitaController@destroy')->name('chanchita.destroy');
+Route::get('/chanchitas', 'ChanchitaController@index')->middleware('auth')->name('chanchita.index');
+Route::get('/chanchitas/create', 'ChanchitaController@create')->middleware('auth')->name('chanchita.create');
+Route::post('/chanchitas', 'ChanchitaController@store')->middleware('auth')->name('chanchita.store');
+Route::get('/chanchitas/{chanchita}', 'ChanchitaController@show')->middleware('auth')->name('chanchita.show');
+Route::get('/chanchitas/{chanchita}/edit', 'ChanchitaController@edit')->middleware('auth')->name('chanchita.edit');
+Route::put('/chanchitas/{chanchita}', 'ChanchitaController@update')->middleware('auth')->name('chanchita.update');
+Route::delete('/chanchitas/{chanchita}', 'ChanchitaController@destroy')->middleware('auth')->name('chanchita.destroy');
 
-Route::get('/chanchitas/{chanchita}/categorias/{category_id}', 'ChanchitaCategoryController@index')->name('chanchita.category.index');
-Route::get('/add-cart', 'ChanchitaCategoryController@add_to_cart')->name('add.cart');
+Route::get('/chanchitas/{chanchita}/categorias/{category_id}', 'ChanchitaCategoryController@index')->middleware('auth')->name('chanchita.category.index');
+Route::get('/add-cart', 'ChanchitaCategoryController@add_to_cart')->middleware('auth')->name('add.cart');
 
 
-Route::get('/invitaciones', 'InvitationController@index')->name('invitation.index');
-Route::post('/invitaciones/search', 'InvitationController@search')->name('invitation.search');
-Route::get('/invitaciones/accept', 'InvitationController@accept')->name('invitation.accept');
-Route::get('/invitaciones/{chanchita_id}', 'InvitationController@show')->name('invitation.show');
-Route::delete('/invitaciones/{chanchita_id}', 'InvitationController@destroy')->name('invitation.destroy');
+Route::get('/invitaciones', 'InvitationController@index')->middleware('auth')->name('invitation.index');
+Route::post('/invitaciones/search', 'InvitationController@search')->middleware('auth')->name('invitation.search');
+Route::get('/invitaciones/accept', 'InvitationController@accept')->middleware('auth')->name('invitation.accept');
+Route::get('/invitaciones/{chanchita_id}', 'InvitationController@show')->middleware('auth')->name('invitation.show');
+Route::delete('/invitaciones/{chanchita_id}', 'InvitationController@destroy')->middleware('auth')->name('invitation.destroy');
 
-Route::get('image/upload', 'ImageController@create')->name('image.create');
-Route::post('image/upload', 'ImageController@store')->name('image.store');
+Route::get('image/upload', 'ImageController@create')->middleware('auth')->name('image.create');
+Route::post('image/upload', 'ImageController@store')->middleware('auth')->name('image.store');
 
 
