@@ -53,6 +53,7 @@ Route::get('/invitaciones/accept', 'InvitationController@accept')->name('invitat
 Route::get('/invitaciones/{chanchita_id}', 'InvitationController@show')->name('invitation.show');
 Route::delete('/invitaciones/{chanchita_id}', 'InvitationController@destroy')->name('invitation.destroy');
 
-
+Route::get('image/upload', 'ImageController@create')->name('image.create');
+Route::post('image/upload', 'ImageController@store')->name('image.store');
 
 
