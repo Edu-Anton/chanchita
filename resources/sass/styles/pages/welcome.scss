@@ -1,0 +1,71 @@
+.banner {
+  &__wrapper {
+    position: relative;
+  }
+  &__zindex-box {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    display: flex;
+    // justify-content: flex-end;
+    align-items: center;
+    // @media (max-width: 768px) {
+    //   align-items: flex-end;
+    // }
+  }
+  &__text-box {
+    width: 250px;
+    background-color: rgba(#ccc, .5);
+    padding: 20px;
+    color: #002060;
+    // font-weight: 300;
+    // font-family: 'Montserrat', sans-serif;
+    line-height: 2;
+    @media (max-width: 768px) {
+      // color: red;
+      width: 100%;
+      font-size: 1rem;
+      line-height: 1.4;
+      display: none;
+      // position: relative;
+      // top: 180px;
+      // left: 0;
+      // right: 0;
+    }
+  }
+  &__callto {
+    width: 100%;
+    border: none;
+    background-color:  #198cff;
+    color: #666;
+    padding: 14px 20px;
+    margin-top: 20px;
+    color: #fff;
+    &:hover {
+      outline: none;
+    }
+  }
+}
+
+
+.about {
+  &__section {
+    text-align: center;
+    margin-top: 80px;
+  }
+}
+
+.icon {
+  font-size: 3.5em;
+  color: #fff;
+  &-box {
+    min-width: 110px; // todo: arreglar para usar correctamnte la propiedad
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffc1ff;
+  }
+}

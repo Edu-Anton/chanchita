@@ -1,0 +1,26 @@
+.inner-banner {
+  &__wrapper {
+    position: relative;
+  }
+  &__text-wrapper {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  &__title {
+    background-color: rgba(255,193,255,.8);
+    padding: 20px 40px;
+    font-weight: normal;
+    color: #fff;
+    font-size: 24px;
+    font-family: 'Montserrat', sans-serif;
+    @media (max-width: 768px) {
+      font-size: 18px;
+      padding: 15px 40px;
+    }
+  }
+}

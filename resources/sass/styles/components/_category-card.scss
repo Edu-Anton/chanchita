@@ -1,0 +1,18 @@
+.category-card {
+  &__wrapper {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  &__text-box {
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    background-color:rgba(black, .5);
+    // background-color: rgba(#5DC1B9,.6);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    color: #fff;
+    font-weight: 500;
+    
+  }
+}

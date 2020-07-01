@@ -1,0 +1,31 @@
+.list-group {
+  overflow: hidden;
+}
+.sidebar-product {
+  &__icon {
+    width: 15px;
+  }
+  &__link {
+    color: #777;
+    &:hover {
+      text-decoration: none;
+      color:#777;
+    }
+  }
+  &__active {
+    // margin-left: 5px;
+    font-weight: 600;
+    color: #555;
+  }
+  &__group {
+    border-radius: 10px;
+  }
+  &__first {
+    background-color: #198cff;
+    border-top-left-radius: 30px;
+    & a {
+      color: #fff !important;
+    }
+  }
+}
+

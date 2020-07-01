@@ -1,0 +1,42 @@
+.footer {
+  background-color: #002060;
+  min-height: 50px;
+  display: block;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color:  #fff;
+  &__link {
+  font-size: 15px;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none !important;
+  display: block;
+    &:hover {
+      font-weight: 400;
+      color: #fff;
+    }
+    @media (min-width: 768px) {
+      margin-right: 20px;;
+    }
+  }
+  &__links-wrapper {
+    display: flex;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  &__copy {
+    border-top: none;
+    text-align: right;
+    @media (max-width: 768px) {
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+      margin-top: 15px;
+      text-align: center;
+    }
+  }
+}
+a.footer__link.active {
+  font-weight: 400;
+}

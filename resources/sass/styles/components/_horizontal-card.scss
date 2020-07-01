@@ -1,0 +1,17 @@
+.card-h {
+  border-radius: 7px;
+  overflow: hidden;
+  &__img {
+    background-size: cover;
+  }
+  &__badge {
+    padding: 4px 15px;
+    border-radius: 10px;
+  }
+  &__link {
+    color: #555 !important;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
