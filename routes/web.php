@@ -44,7 +44,7 @@ Route::put('/chanchitas/{chanchita}', 'ChanchitaController@update')->middleware(
 Route::delete('/chanchitas/{chanchita}', 'ChanchitaController@destroy')->middleware('auth')->name('chanchita.destroy');
 
 Route::get('/chanchitas/{chanchita}/categorias/{category_id}', 'ChanchitaCategoryController@index')->middleware('auth')->name('chanchita.category.index');
-Route::get('/add-cart', 'ChanchitaCategoryController@add_to_cart')->middleware('auth')->name('add.cart');
+Route::post('/add-cart', 'ChanchitaCategoryController@add_to_cart')->middleware('auth')->name('add.cart');
 
 
 Route::get('/invitaciones', 'InvitationController@index')->middleware('auth')->name('invitation.index');
@@ -57,3 +57,7 @@ Route::get('image/upload', 'ImageController@create')->middleware('auth')->name('
 Route::post('image/upload', 'ImageController@store')->middleware('auth')->name('image.store');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
