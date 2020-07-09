@@ -57,3 +57,7 @@ Route::get('image/upload', 'ImageController@create')->middleware('auth')->name('
 Route::post('image/upload', 'ImageController@store')->middleware('auth')->name('image.store');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
