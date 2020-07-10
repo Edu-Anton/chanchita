@@ -1,37 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="title1">Nuevo Producto</h3>
+    <button class="btn btn-link"><a href="{{ route('product.index') }}">Regresar</a></button>
+  </div>
     <div class="card">
       <div class="card-body">
-        <h3 class="title2">Nuevo Producto</h3>
 
-      {{-- <div style="with:100px;height:200px;overflow:hidden;background-image:url({{url('/img/category1.jpg')}}); "></div> --}}
-
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-6">
-                <figure class="text-center">
-                  <img style="width: 300px; height:300px" src="{{ asset('img/category1.jpg') }}" alt="">
-                </figure>
-              </div>
-              <div class="col-6">
-                <form action="" enctype="multipart/form-data">
-                  <div class="form-group">
-                    {{-- <label for="product-file">Example file input</label> --}}
-                    <input type="file" class="form-control" id="product-file">
-                  </div>
-    
-                  <button class="btn btn-info" type="submit">Subir Imagen</button>
-                </form>
-              </div>
-            </div>
-    
-          </div>
-        </div>
-
-        <form action="{{route('product.store')}}" method="POST">
+        <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
           @csrf
+          <figure class="text-center">
+            <div class="col-md-4 card-h__img" style="" id="bg"></div>
+            <img class="card-image-form__img" src="" alt="" id="imagen_mostrada">
+          </figure>
+          <div class="text-center mb-4">
+            <input type="file" class="form-control d-none" id="product-file" name="url_img">
+            
+            <button class="btn button__base btn-outline-info" id="enlazado">
+              <img class="sidebar-product__icon mr-3" src="{{ asset('img/camera.svg') }}" alt="Chanchitas">
+              Cargar imagen
+            </button>
+          </div>
           <div class="form-group">
             <input 
               type="text" 
@@ -60,9 +50,40 @@
             </select>
           </div>
           <div class="form-group mt-4">
-            <button class="btn btn-info" type="submit">Crear Producto</button>
+            <button class="btn button__base button__blue" type="submit">Crear Producto</button>
           </div>
         </form>
+
+        <script>
+          const enlazado = document.getElementById('enlazado');
+          const file_input = document.getElementById('product-file')
+          const imagen_mostrada = document.getElementById('imagen_mostrada');
+          // const bg = document.getElementById('bg');
+          enlazado.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('enlazado!!');
+            file_input.click();
+          });
+
+          file_input.addEventListener('change', (e)=> {
+            e.preventDefault();
+            console.log(e.target.files[0]);
+            const file = e.target.files[0];
+
+            console.log('const file', file.name);
+
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = (event) => {
+              // console.log('la plata', event.target.result);
+              imagen_mostrada.setAttribute('src', event.target.result);
+              // bg.setAttribute('style', `background-image:url(${event.target.result})`);
+              // bg.style.backgroundImage = 'url(' + e.target.result + ')';
+            }
+          })
+          
+        </script>
+
       </div>
     </div>
 @endsection

@@ -11234,6 +11234,15 @@ a.footer__link.active {
   color: #fff !important;
 }
 
+.card-image-form__img {
+  width: 250px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 1px #ddd;
+  border-radius: 7px;
+}
+
 .banner__wrapper {
   position: relative;
 }

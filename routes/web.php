@@ -28,6 +28,7 @@ Route::get('/categorias/{category}/edit', 'CategoryController@edit')->middleware
 Route::put('/categorias/{category}', 'CategoryController@update')->middleware('auth')->name('category.update');
 Route::delete('/categorias/{category}', 'CategoryController@destroy')->middleware('auth')->name('category.destroy');
 
+Route::get('/productos/search', 'ProductController@search')->middleware('auth')->name('product.search');
 Route::get('/productos', 'ProductController@index')->middleware('auth')->name('product.index');
 Route::get('/productos/create', 'ProductController@create')->middleware('auth')->name('product.create');
 Route::post('/productos', 'ProductController@store')->middleware('auth')->name('product.store');

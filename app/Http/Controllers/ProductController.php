@@ -16,7 +16,24 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::orderBy('created_at', 'desc')->get();
-        return view('admin.products.index', compact('products'));
+        $categories = Category::orderBy('name', 'desc')->get();
+        return view('admin.products.index', compact('products', 'categories'));
+    }
+
+    public function search(Request $request)
+    {
+        // dd($request);
+        $query = $request->input('query');
+
+        if ($query == 0) 
+        {
+            return redirect()->route('product.index');
+        }
+
+        $products = Product::where('category_id', $query)->get();
+        $categories = Category::orderBy('name', 'desc')->get();
+
+        return view('admin.products.index', compact('products', 'categories'));
     }
 
     /**
@@ -38,7 +55,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($request->all());
+        $product = new Product;
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
+
+        if ($request->hasFile('url_img'))
+        {
+            $product->url_img = $request->file('url_img')->store('public');
+        }
+
+        $product->save();
         return redirect()->route('product.index');
     }
 
@@ -76,7 +103,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $product->update($request->all());
+        // dd($request);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->category_id = $request->category_id;
+
+        if ($request->hasFile('url_img'))
+        {
+            $product->url_img = $request->file('url_img')->store('public');
+        }
+
+        $product->save();
+        // $product->update($request->all());
         return redirect()->route('product.index');
     }
 
