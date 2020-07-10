@@ -1,9 +1,12 @@
 @extends('layouts.appproduct')
 
+@push('scripts')
+
+@endpush
+
+
 @section('content')
     {{-- {{dd($request->is('chanchitas/*'));}} --}}
-    {{-- @dd($chanchita) --}}
-    @if(request()->chanchita === 2) <p>si</p> @endif
   
     <div class="d-flex justify-content-between">
       <h3 class="title1">Productos</h3>
@@ -11,7 +14,8 @@
     </div>
     {{-- @dd(request()) --}}
     {{-- <div class="container"> --}}
-      <div class="row">
+      <div class="row" id="tarjetas">
+        
         @foreach ($products as $product)
           <div class="col-10 col-md-6 col-lg-4 mb-4">
             <div class="card product__card shadow">
@@ -32,14 +36,16 @@
                     <button class="btn btn-outline-info button__base" disabled>&#10003</button>
 
                   @else 
-                    <button class="btn btn-pink button__base button__pink">
-                      <a href="{{route('add.cart', [
-                        'product_id'=>$product, 
-                        'quantity'=>2, 
-                        'chanchita_id'=>$chanchita])}}">
-                        Añadir
-                      </a>
-                    </button>                  
+                    <button 
+                      class="btn btn-pink button__base button__pink"
+                      {{-- data-toggle="modal" 
+                      data-target="#staticBackdrop" --}}
+                    >
+                        Añadir @{{prueba}}
+                    </button>   
+                    {{-- <button class="btn" data-toggle="modal" data-target="#staticBackdrop">Modal</button> --}}
+                    <h2 v-if="confirma">Verdadero</h2>
+                    <button @click="confirma=!confirma">Cambiar</button>
                   @endif
                 </div>
               </div>
@@ -59,7 +65,12 @@
               </div> --}}
             </div>
           </div>
+          
         @endforeach
       </div>
-    {{-- </div> --}}
+
+      {{-- </div> --}}
+
+      {{-- MOdal --}}
+      @include('layouts.components.modal')
 @endsection

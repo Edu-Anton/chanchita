@@ -20,6 +20,8 @@ class ChanchitaCategoryController extends Controller
         $selected_ids = Chanchita::find($chanchita)->products()->get()->pluck('id')->toArray();
         // dd(in_array(1, $chanchita_products_selected_ids));
         
+        // dd($selected_ids);
+
         $products = Product::where('category_id', $category_id)->get();
 
         // $products = $products_without->map(function ($product) {
@@ -61,14 +63,15 @@ class ChanchitaCategoryController extends Controller
 
     public function add_to_cart(Request $request)
     {
+        // dd($request);
         // dd($request->chanchita_id);
         // dd($request->quantity);
-        // dd($request->product_id);
+        dd($request->product_id);
 
-        $chanchitad = Chanchita::find($request->chanchita_id);
+        $chanchita = Chanchita::find($request->chanchita_id);
 
         // dd($chanchitad);
-        $chanchitad->products()->attach($request->product_id, ['quantity'=>$request->quantity]);
+        $chanchita->products()->attach($request->product_id, ['quantity'=>$request->quantity]);
 
         return back();
     }
