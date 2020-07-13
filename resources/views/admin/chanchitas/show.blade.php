@@ -23,6 +23,8 @@
   </div>
 </div>
 
+
+
 <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
   <h3 class="title2 mb-0">Lista</h3>
 
@@ -47,6 +49,13 @@
                 </div>
                 <div class="col-6 d-flex align-items-center">
                   <b>{{$product->name}}</b>
+                  <form action="{{ route('chanchita.product.list.destroy', ['product_id'=>$product->id])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <input type="hidden" name="chanchita_id" value={{$chanchita->id}}>
+                    <button type="submit" class="btn btn-link">[Eliminar]</button></a>
+                  </form>
+                  <button class="btn btn-link">[Modificar]</button>
                 </div>
                 <div class="col-2 d-flex align-items-center justify-content-end">
                   <span>{{$product->pivot->quantity}} unid.</span>

@@ -44,6 +44,8 @@ Route::get('/chanchitas/{chanchita}/edit', 'ChanchitaController@edit')->middlewa
 Route::put('/chanchitas/{chanchita}', 'ChanchitaController@update')->middleware('auth')->name('chanchita.update');
 Route::delete('/chanchitas/{chanchita}', 'ChanchitaController@destroy')->middleware('auth')->name('chanchita.destroy');
 
+Route::delete('/chanchita/productlist/{product_id}', 'ChanchitaProductListController@destroy')->middleware('auth')->name('chanchita.product.list.destroy');
+
 Route::get('/chanchitas/{chanchita}/categorias/{category_id}', 'ChanchitaCategoryController@index')->middleware('auth')->name('chanchita.category.index');
 Route::post('/add-cart', 'ChanchitaCategoryController@add_to_cart')->middleware('auth')->name('add.cart');
 

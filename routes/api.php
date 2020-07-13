@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/chanchitas/{chanchita_id}/categorias/{category_id}/productos', 'Api\ChanchitaProduct@index')->name('api.chanchita.product.index');
+Route::post('/chanchitas/{chanchita_id}/categorias/{category_id}/productos', 'Api\ChanchitaProduct@added')->name('api.chanchita.product.added');

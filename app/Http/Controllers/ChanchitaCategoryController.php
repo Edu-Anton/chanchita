@@ -69,8 +69,6 @@ class ChanchitaCategoryController extends Controller
         dd($request->product_id);
 
         $chanchita = Chanchita::find($request->chanchita_id);
-
-        // dd($chanchitad);
         $chanchita->products()->attach($request->product_id, ['quantity'=>$request->quantity]);
 
         return back();

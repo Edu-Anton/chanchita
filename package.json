@@ -23,5 +23,10 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0"
+    },
+    "dependencies": {
+        "@hookform/resolvers": "0.0.6",
+        "react-hook-form": "^6.0.3",
+        "yup": "^0.29.1"
     }
 }
