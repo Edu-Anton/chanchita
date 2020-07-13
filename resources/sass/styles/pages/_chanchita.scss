@@ -1,0 +1,14 @@
+.chanchita-nav {
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__button {
+    border-radius: 7px;
+    display: inline-block;
+    // width: 150px;
+    flex-grow: 1;
+    height: 80px;
+  }
+}

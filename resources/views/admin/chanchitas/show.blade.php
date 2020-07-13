@@ -23,7 +23,11 @@
   </div>
 </div>
 
-
+{{-- <div class="chanchita-nav__container">
+  <button class="chanchita-nav__button">Presentación</button>
+  <button class="chanchita-nav__button">Mi lista</button>
+  <button class="chanchita-nav__button">Mis participantes</button>
+</div> --}}
 
 <div class="d-flex justify-content-between align-items-center mt-5 mb-3">
   <h3 class="title2 mb-0">Lista</h3>
@@ -73,7 +77,7 @@
       @else
           <div class="card-body">
               @if (auth()->user()->id === $chanchita->user_id)
-              Añade productos a tu carrito
+              Añade productos a tu lista
                   
               @else
               Aún no se han añadido productos
@@ -99,8 +103,10 @@
 
 
   @if ($users->isEmpty())
-    <div class="container">
-      <p class="my-4">Aún no hay participantes confirmados.</p>
+    <div class="card">
+      <div class="card-body">
+        <p class="my-4">Aún no hay participantes confirmados.</p>
+      </div>
     </div>
   @else    
   <div class="card shadow card-rounded">

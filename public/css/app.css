@@ -11381,6 +11381,19 @@ a.footer__link.active {
   width: 100%;
 }
 
+.chanchita-nav__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chanchita-nav__button {
+  border-radius: 7px;
+  display: inline-block;
+  flex-grow: 1;
+  height: 80px;
+}
+
 body {
   color: #555;
 }
