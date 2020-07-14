@@ -55,7 +55,7 @@
               Facebook:
             </div>
             <div class="col-9 my-2">
-              {{$user->lastname}}
+              {{$user->facebook}}
             </div>
           </div>
           <div class="row profile__row">

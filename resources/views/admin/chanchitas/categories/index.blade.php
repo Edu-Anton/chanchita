@@ -1,8 +1,12 @@
-@extends('layouts.appproduct')
+@extends('layouts.app-sidebar')
 
 @push('scripts')
 
 @endpush
+
+@section('sidebar')
+  @include('layouts.partials._sidebarproduct')
+@endsection
 
 
 @section('content')
