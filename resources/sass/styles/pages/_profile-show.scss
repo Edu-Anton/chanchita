@@ -1,0 +1,28 @@
+.profile {
+  &__avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__avatar-btn {
+    width: 200px;
+  }
+  &__label {
+    &::after {
+      content:'';
+      border-right: 1px solid #ddd;
+      display: inline-block;
+      position: absolute;
+      top: -25px;
+      right: 0px;
+      height: 75px;
+    }
+  }
+  &__row {
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+}

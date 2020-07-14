@@ -9,7 +9,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-3">
-                        @include('layouts.partials._sidebarproduct')
+                        @yield('sidebar')
+                        {{-- @include('layouts.partials._sidebarproduct') --}}
                     </div>
                     <div class="col-9">
                         @yield('content')

@@ -11394,6 +11394,34 @@ a.footer__link.active {
   height: 80px;
 }
 
+.profile__avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile__avatar-btn {
+  width: 200px;
+}
+
+.profile__label::after {
+  content: "";
+  border-right: 1px solid #ddd;
+  display: inline-block;
+  position: absolute;
+  top: -25px;
+  right: 0px;
+  height: 75px;
+}
+
+.profile__row {
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
 body {
   color: #555;
 }

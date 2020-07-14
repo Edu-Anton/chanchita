@@ -7,14 +7,9 @@
 
         <main class="flex-grow-1 my-4 ">
             <div class="container">
-                <div class="row">
-                    <div class="col-3">
-                        @include('layouts.partials._sidebar')
-                    </div>
-                    <div class="col-9">
-                        @yield('content')
-                    </div>
-                </div>
+
+                @yield('content')
+                
             </div>
         </main>
 

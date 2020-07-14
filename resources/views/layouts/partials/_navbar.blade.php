@@ -41,7 +41,7 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} 
                             <span class="avatar-nav__box">
-                                <img class="avatar-nav__img" src="{{ asset('img/avatar-nav.png') }}" alt="">
+                                <img class="avatar-nav__img" src="{{ url(Storage::url(auth()->user()->avatar)) }}" alt="">
                                 <span class="caret avatar-nav__caret"></span>
                                 <ion-icon name="caret-down-outline"></ion-icon>
                             </span>
@@ -52,9 +52,14 @@
                             <a class="dropdown-item navbar__dropdown" href="{{ route('home') }}">
                                 Mis Chanchitas
                             </a>
-                            <a class="dropdown-item navbar__dropdown" href="#">
+                            <a class="dropdown-item navbar__dropdown" href="{{ route('profile.show', ['user' => auth()->user()->id]) }}">
                                 Mi Perfil
                             </a>
+                            @if (auth()->user()->rol === 'admin')    
+                                <a class="dropdown-item navbar__dropdown" href="{{ route('product.index') }}">
+                                    Panel de Administrador
+                                </a>
+                            @endif
                             <a class="dropdown-item navbar__dropdown" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">

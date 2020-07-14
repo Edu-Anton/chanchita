@@ -21,6 +21,11 @@ Route::view('/', 'welcome');
 
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
+Route::get('/profile/{user}', 'ProfileController@show')->middleware('auth')->name('profile.show');
+Route::get('/profile/{user}/edit', 'ProfileController@edit')->middleware('auth')->name('profile.edit');
+Route::patch('/profile/{user}', 'ProfileController@update')->middleware('auth')->name('profile.update');
+
+
 Route::get('/categorias', 'CategoryController@index')->middleware('auth')->name('category.index');
 Route::get('/categorias/create', 'CategoryController@create')->middleware('auth')->name('category.create');
 Route::post('/categorias', 'CategoryController@store')->middleware('auth')->name('category.store');

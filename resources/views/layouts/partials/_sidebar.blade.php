@@ -11,10 +11,5 @@
     <img class="sidebar-product__icon mr-3" src="{{ asset('img/mail-outline.svg') }}" alt="Chanchitas">
     <a class="sidebar-product__link @if (request()->is('invitaciones')) sidebar-product__active @endif"  href="{{ route('invitation.index') }}">Mis Invitaciones</a>
   </li>
-  <li class="list-group-item">
-    <a href="{{ route('category.index') }}">Categorías</a>
-  </li>
-  <li class="list-group-item">
-    <a href="{{ route('product.index') }}">Productos</a>
-  </li>
+  
 </ul>
