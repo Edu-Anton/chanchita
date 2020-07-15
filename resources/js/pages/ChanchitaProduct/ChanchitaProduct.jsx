@@ -4,6 +4,7 @@ import Axios from 'axios';
 import $ from 'jquery';
 
 import ProductCard from './ProductCard';
+import ProductEditCard from './ProductEditCard';
 import ModalCard from './ModalCard';
 
 // import ProductCard from 'ProductCard';
@@ -66,6 +67,8 @@ const ChanchitaProduct = () => {
   return (
     <>
       <div className="row">
+        {/* <ProductEditCard product={product} handleModal={handleModal} selecteds={selecteds}/> */}
+
       {
         products.map(product => 
           <ProductCard product={product} handleModal={handleModal} selecteds={selecteds} key={product.id}/>

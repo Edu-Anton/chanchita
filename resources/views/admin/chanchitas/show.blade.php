@@ -95,7 +95,7 @@
 
   @if ($chanchita->user_id === auth()->user()->id)    
     <button class="btn button__base button__pink">
-      <a href="#">Añadir participates</a>
+    <a href="{{ route('chanchita.user.list.index', ['chanchita_id' => $chanchita->id]) }}">Añadir participates</a>
     </button>
   @endif
 </div>

@@ -13,4 +13,5 @@ require('./bootstrap');
  */
 
 require('./pages/ChanchitaProduct/ChanchitaProduct');
+require('./pages/ChanchitaUserList/ChanchitaUserList');
 require('./components/Example');

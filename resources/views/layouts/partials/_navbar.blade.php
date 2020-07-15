@@ -50,19 +50,23 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item navbar__dropdown" href="{{ route('home') }}">
+                                <img class="sidebar-product__icon mr-1" src="{{ asset('img/people-outline.svg') }}" alt="Chanchitas">
                                 Mis Chanchitas
                             </a>
                             <a class="dropdown-item navbar__dropdown" href="{{ route('profile.show', ['user' => auth()->user()->id]) }}">
+                                <img class="sidebar-product__icon mr-1" src="{{ asset('img/person-circle-outline.svg') }}" alt="Chanchitas">
                                 Mi Perfil
                             </a>
                             @if (auth()->user()->rol === 'admin')    
                                 <a class="dropdown-item navbar__dropdown" href="{{ route('product.index') }}">
+                                    <img class="sidebar-product__icon mr-1" src="{{ asset('img/grid-outline.svg') }}" alt="Chanchitas">
                                     Panel de Administrador
                                 </a>
                             @endif
                             <a class="dropdown-item navbar__dropdown" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
+                                <img class="sidebar-product__icon mr-1" src="{{ asset('img/power-outline.svg') }}" alt="Chanchitas">
                                 {{ __('Logout') }}
                             </a>
 

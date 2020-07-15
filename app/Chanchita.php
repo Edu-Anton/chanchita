@@ -23,4 +23,9 @@ class Chanchita extends Model
     {
         return $this->belongsToMany(User::class, 'user_chanchita');
     }
+
+    public function guests()
+    {
+        return $this->hasMany(Guest::class);
+    }
 }
