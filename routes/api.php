@@ -23,6 +23,6 @@ Route::post('/chanchita/{chanchita_id}/userlist/guest', 'Api\ChanchitaUserListCo
 Route::put('/chanchita/{chanchita_id}/userlist/guest/{guest_id}', 'Api\ChanchitaUserListController@update')->name('api.chanchita.user.list.update');
 Route::delete('/chanchita/{chanchita_id}/userlist/guest/{guest_id}', 'Api\ChanchitaUserListController@destroy')->name('api.chanchita.user.list.destroy');
 
-Route::get('/chanchitas/{chanchita_id}/categorias/{category_id}/productos', 'Api\ChanchitaProduct@index')->name('api.chanchita.product.index');
-Route::post('/chanchitas/{chanchita_id}/categorias/{category_id}/productos', 'Api\ChanchitaProduct@added')->name('api.chanchita.product.added');
+Route::get('/chanchitas/{chanchita_id}/categorias/{category_id}/productos', 'Api\ChanchitaProductController@index')->name('api.chanchita.product.index');
+Route::post('/chanchitas/{chanchita_id}/categorias/{category_id}/productos', 'Api\ChanchitaProductController@added')->name('api.chanchita.product.added');
 

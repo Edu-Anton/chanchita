@@ -52,11 +52,12 @@ const ChanchitaProduct = () => {
 
   // Paso2: Recibe la info de formulario y le suma el product_id
   const onSubmit = async (formdata) => {
-    const product_id = product.id
+    const name = product.name
+    const url_img = product.url_img
     const chanchita_id = chanchita;
-    console.log({...formdata, product_id, chanchita_id});
+    // console.log({...formdata, product_id, chanchita_id});
 
-    const response = await Axios.post(`/api${pathname}/productos`, {...formdata, product_id, chanchita_id})
+    const response = await Axios.post(`/api${pathname}/productos`, {...formdata, name, url_img, chanchita_id})
     console.log('data',response.data.msg);
     $('#staticBackdrop').modal('hide'); //Eliminar Jquery
     document.getElementById("modal-form").reset();
@@ -67,7 +68,11 @@ const ChanchitaProduct = () => {
   return (
     <>
       <div className="row">
-        {/* <ProductEditCard product={product} handleModal={handleModal} selecteds={selecteds}/> */}
+        <ProductEditCard 
+            // product={product} 
+            handleModal={handleModal} 
+            selecteds={selecteds}
+        />
 
       {
         products.map(product => 

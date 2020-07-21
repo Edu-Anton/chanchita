@@ -79826,20 +79826,19 @@ var ChanchitaProduct = function ChanchitaProduct() {
 
   var onSubmit = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(formdata) {
-      var product_id, chanchita_id, response;
+      var name, url_img, chanchita_id, response;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              product_id = product.id;
-              chanchita_id = chanchita;
-              console.log(_objectSpread(_objectSpread({}, formdata), {}, {
-                product_id: product_id,
-                chanchita_id: chanchita_id
-              }));
+              name = product.name;
+              url_img = product.url_img;
+              chanchita_id = chanchita; // console.log({...formdata, product_id, chanchita_id});
+
               _context2.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_3___default.a.post("/api".concat(pathname, "/productos"), _objectSpread(_objectSpread({}, formdata), {}, {
-                product_id: product_id,
+                name: name,
+                url_img: url_img,
                 chanchita_id: chanchita_id
               }));
 
@@ -79867,7 +79866,11 @@ var ChanchitaProduct = function ChanchitaProduct() {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
     className: "row"
-  }, products.map(function (product) {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ProductEditCard__WEBPACK_IMPORTED_MODULE_6__["default"] // product={product} 
+  , {
+    handleModal: handleModal,
+    selecteds: selecteds
+  }), products.map(function (product) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ProductCard__WEBPACK_IMPORTED_MODULE_5__["default"], {
       product: product,
       handleModal: handleModal,
@@ -80067,49 +80070,26 @@ var ProductCard = function ProductCard(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 var ProductEditCard = function ProductEditCard(_ref) {
-  var product = _ref.product,
-      handleModal = _ref.handleModal,
+  var handleModal = _ref.handleModal,
       selecteds = _ref.selecteds;
-  var origin = window.location.origin;
-  var urlImg = product.url_img.replace('public', "".concat(origin, "/storage"));
+  var origin = window.location.origin; // const urlImg = product.url_img.replace('public', `${origin}/storage`);
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-10 col-md-6 col-lg-4 mb-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card product__card shadow"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("figure", {
     className: "w-100 product__img-box"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "w-100",
-    src: urlImg,
-    alt: ""
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body product__body"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "product__title-box"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    className: "product__title"
-  }, product.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-between align-items-center"
-  }, selecteds.includes(product.id) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-outline-info button__base",
-    disabled: true
-  }, "En lista") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-pink button__base button__pink",
-    "data-toggle": "modal",
-    "data-target": "#staticBackdrop",
-    onClick: function onClick() {
-      return handleModal(_objectSpread({}, product));
-    }
-  }, "A\xF1adir")))));
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ProductEditCard);

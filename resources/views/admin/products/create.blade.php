@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-sidebar')
 
 @section('content')
   <div class="d-flex justify-content-between align-items-center mb-4">
@@ -22,34 +22,53 @@
               Cargar imagen
             </button>
           </div>
-          <div class="form-group">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Nombre del producto"
-              name="name"
-            >
+          
+          <div class="container mt-5">
+            <div class="row form__group">
+              <div class="col-3">
+                <span class="col-form-label">Nombre:</span>
+              </div>
+              <div class="col-9">
+
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  {{-- placeholder="Nombre del producto" --}}
+                  name="name"
+                >
+              </div>
+            </div>
+            <div class="row form__group">
+              <div class="col-3">
+                <span class="col-form-label">Precio:</span>
+              </div>
+              <div class="col-9">
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  {{-- placeholder="Precio del Producto" --}}
+                  name="price"
+                >
+              </div>
+            </div>
+            <div class="row form__group">
+              <div class="col-3">
+                <span class="col-form-label">Categoría:</span>
+              </div>
+              <div class="col-9">
+                <select 
+                  name="category_id" 
+                  class="form-control"
+                > 
+                  <option>--Seleccione una categoría</option>
+                  @foreach ($categories as $category)  
+                    <option value="{{$category->id}}" >{{$category->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Precio del Producto"
-              name="price"
-            >
-          </div>
-          <div class="form-group">
-            <select 
-              name="category_id" 
-              class="form-control"
-            > 
-              <option>--Seleccione una categoría</option>
-              @foreach ($categories as $category)  
-                <option value="{{$category->id}}" >{{$category->name}}</option>
-              @endforeach
-            </select>
-          </div>
-          <div class="form-group mt-4">
+          <div class="form-group mt-5 text-center">
             <button class="btn button__base button__blue" type="submit">Crear Producto</button>
           </div>
         </form>

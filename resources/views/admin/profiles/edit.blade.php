@@ -10,7 +10,7 @@
  @method('PATCH')
 
 <div class="row">
-  <div class="col-3">
+  <div class="col-12 col-lg-3">
 
 
     {{-- <figure class="text-center">
@@ -38,7 +38,7 @@
       Cargar imagen
     </button>
   </div>
-  <div class="col-9">
+  <div class="col-12 col-lg-9">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h3 class="title1">Editar Mi Perfil</h3>
       <a class="btn btn-link" href="{{ route('home') }}">Regresar</a>
@@ -46,24 +46,24 @@
 
     <div class="card">
       <div class="card-body">
-        <h5>Datos del usuario</h5>
-        <hr>
-        <div class="container mb-5">
-          <div class="row profile__row">
-            <div class="col-3 text-right">
-              Nombre:
+        <h5 class="position-relative" ><img class="mr-2" style="width: 1.5rem; position-relative; top:-15px" src="{{ asset('img/camera.svg') }}" alt="Juguetes">Datos del usuario</h5>
+      
+        <div class="container mt-4 mb-5">
+          <div class="row form__group">
+            <div class="col-3">
+              <span class="col-form-label">Nombre:</span>
             </div>
             <div class="col-9">
               <input 
-                  class="form-control disabled" 
+                  class="form-control" 
                   type="text" 
                   name="name"
                   value="{{$edit_user->name}}">
             </div>
           </div>
-          <div class="row profile__row">
+          <div class="row form__group">
             <div class="col-3 text-right">
-              Apellido:
+              <span class="col-form-label">Apellido:</span>
             </div>
             <div class="col-9">
               <input 
@@ -79,38 +79,42 @@
 
 
         <h5>Información de contacto</h5>
-        <hr>
-        <div class="container">
-          <div class="row profile__row">
+       
+        <div class="container mt-4 mb-4">
+          <div class="row form__group">
             <div class="col-3 text-right">
-              Teléfono:
+              <span class="col-form-label">Teléfono:</span>
             </div>
             <div class="col-9">
               <input 
                   class="form-control disabled" 
                   type="text"
                   name="phone"
-                  placeholder="999-999-999" 
+                  {{-- placeholder="999-999-999"  --}}
                   value={{$edit_user->phone}}>
             </div>
           </div>
-          <div class="row profile__row">
+          <div class="row form__group">
             <div class="col-3 text-right">
-              Facebook:
+              <span class="col-form-label">Facebook:</span>
             </div>
             <div class="col-9">
               <input class="form-control" type="text" value={{$edit_user->facebook}}>
             </div>
           </div>
-          <div class="row profile__row">
+          <div class="row form__group">
             <div class="col-3 text-right">
-              Twitter:
+              <span class="col-form-label">Twitter:</span>
             </div>
             <div class="col-9">
               <input class="form-control" type="text" value={{$edit_user->twitter}}>
             </div>
           </div>
-          <button class="btn button__base button__pink" type="submit">Guardar cambios</button>
+        </div>
+        <div class="row">
+          <div class="offset-3 col-9">
+            <button class="btn button__base button__pink" type="submit">Guardar cambios</button>
+          </div>
         </div>
       </div>
     </div>

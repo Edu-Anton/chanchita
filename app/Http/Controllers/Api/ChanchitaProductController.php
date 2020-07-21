@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Product;
-use App\Chanchita;
+use App\ChanchitaProduct;
 use Illuminate\Http\Request;
 
-class ChanchitaProduct extends Controller
+class ChanchitaProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,11 @@ class ChanchitaProduct extends Controller
      */
     public function index(Request $request, $chanchita_id, $category_id)
     {
+        // dd($chanchita_id);
         $products = Product::where('category_id', $category_id)->get();
-        $selecteds = Chanchita::find($chanchita_id)->products()->get()->pluck('id')->toArray();
+        // $selecteds = Chanchita::find($chanchita_id)->products()->get()->pluck('id')->toArray();
+        $selecteds = ChanchitaProduct::where('chanchita_id', $chanchita_id)->get()->pluck('id')->toArray();
+        // $selecteds = [2,3];
         // dd($products);
         // return $products;
         return response()->json(['products'=>$products, 'chanchita_id'=>$chanchita_id, 'selecteds' => $selecteds]);
@@ -32,9 +35,15 @@ class ChanchitaProduct extends Controller
      */
     public function added(Request $request)
     {
-        // dd($request);
-        $chanchita = Chanchita::find($request->chanchita_id);
-        $chanchita->products()->attach($request->product_id, ['quantity'=>$request->quantity]);
+        // dd($request->all());
+        $chproduct = new ChanchitaProduct;
+        $chproduct->name = $request->name;
+        $chproduct->quantity = $request->quantity;
+        $chproduct->url_img = $request->url_img;
+        $chproduct->price = $request->price;
+        $chproduct->chanchita_id = $request->chanchita_id;
+        $chproduct->save();
+        // $chanchita_product = ChanchitaProduct::create([$request->all()]);
 
         return response()->json(['msg' => 'almacenado']);
     }

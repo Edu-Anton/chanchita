@@ -18,6 +18,7 @@ Route::view('/acerca-de-nosotros', 'about')->name('about');
 Route::view('/servicios', 'services')->name('services'); 
 Route::view('/preguntas-frecuentes', 'faq')->name('faq'); 
 Route::view('/', 'welcome');
+Route::view('/widgets', 'widgets');
 
 Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 
@@ -46,7 +47,7 @@ Route::get('/chanchitas/create', 'ChanchitaController@create')->middleware('auth
 Route::post('/chanchitas', 'ChanchitaController@store')->middleware('auth')->name('chanchita.store');
 Route::get('/chanchitas/{chanchita}', 'ChanchitaController@show')->middleware('auth')->name('chanchita.show');
 Route::get('/chanchitas/{chanchita}/edit', 'ChanchitaController@edit')->middleware('auth')->name('chanchita.edit');
-Route::put('/chanchitas/{chanchita}', 'ChanchitaController@update')->middleware('auth')->name('chanchita.update');
+Route::patch('/chanchitas/{chanchita}', 'ChanchitaController@update')->middleware('auth')->name('chanchita.update');
 Route::delete('/chanchitas/{chanchita}', 'ChanchitaController@destroy')->middleware('auth')->name('chanchita.destroy');
 
 Route::delete('/chanchita/productlist/{product_id}', 'ChanchitaProductListController@destroy')->middleware('auth')->name('chanchita.product.list.destroy');
@@ -54,7 +55,6 @@ Route::delete('/chanchita/productlist/{product_id}', 'ChanchitaProductListContro
 Route::get('/chanchita/{chanchita_id}/userlist', 'ChanchitaUserListController@index')->middleware('auth')->name('chanchita.user.list.index');
 
 Route::get('/chanchitas/{chanchita}/categorias/{category_id}', 'ChanchitaCategoryController@index')->middleware('auth')->name('chanchita.category.index');
-Route::post('/add-cart', 'ChanchitaCategoryController@add_to_cart')->middleware('auth')->name('add.cart');
 
 
 Route::get('/invitaciones', 'InvitationController@index')->middleware('auth')->name('invitation.index');

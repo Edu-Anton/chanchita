@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Chanchita;
+use App\ChanchitaProduct;
 
 class InvitationController extends Controller
 {
@@ -48,9 +49,22 @@ class InvitationController extends Controller
      */
     public function show($chanchita_id)
     {
+
         $chanchita = Chanchita::find($chanchita_id);
+
+        $products = ChanchitaProduct::where('chanchita_id', $chanchita->id)->get();
+        $arr_precios = $products->pluck('price')->toArray();
+        $precio_sin_formato = array_sum($arr_precios);
+        $precio_total = number_format((float)$precio_sin_formato, 2, '.', '');
+
+        $users = $chanchita->users()->withPivot('status')->get();
+
+        // return view('admin.chanchitas.show', compact('chanchita', 'products', 'precio_total', 'users'));
+
+
+
         // dd($chanchita);
-        return view('admin.invitations.show', compact('chanchita'));
+        return view('admin.invitations.show', compact('chanchita', 'products', 'precio_total', 'users'));
     }
     
     public function search(Request $request)

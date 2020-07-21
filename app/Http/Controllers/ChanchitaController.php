@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Chanchita;
+use App\ChanchitaProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -90,9 +91,10 @@ class ChanchitaController extends Controller
      */
     public function show(Chanchita $chanchita)
     {
+        
         // $chanchita = Chanchita::where('id', $chanchita->id)->with('products')->get();
         // dd($products = Chanchita::find($chanchita->id)->products()->get());
-        $products = $chanchita->products()->withPivot('quantity')->get();
+        $products = ChanchitaProduct::where('chanchita_id', $chanchita->id)->get();
         $arr_precios = $products->pluck('price')->toArray();
         $precio_sin_formato = array_sum($arr_precios);
         $precio_total = number_format((float)$precio_sin_formato, 2, '.', '');
@@ -110,7 +112,8 @@ class ChanchitaController extends Controller
      */
     public function edit(Chanchita $chanchita)
     {
-        //
+        // dd($chanchita);
+        return view('admin.chanchitas.edit', compact('chanchita'));
     }
 
     /**
@@ -122,7 +125,42 @@ class ChanchitaController extends Controller
      */
     public function update(Request $request, Chanchita $chanchita)
     {
-        //
+        
+        // dd($request);
+        // validar
+        $messages = [
+            'name.required' =>  'Debe ingresar un nombre obligatoriamente.',
+            'name.min'      =>  'El nombre del producto debe tener al menos tres caracteres.',
+            'description.required' => 'Agregue una descripción de su evento.',
+            'description.max' => 'La descripción corta solo admite hasta 200 caracteres.',
+            'day.required' => 'Es obligatorio definir una fecha.',
+            'url_img.mimes' => 'Debe ingresar una imagen con formato jpg, png o jpeg'
+        ];
+        $rules = [
+            'name' => 'required|min:3',
+            'description' => 'required|max:200',
+            'day' => 'required|date',
+            'url_img' => 'nullable|mimes:jpeg,jpg,png'
+        ];
+        ChanchitaController::validate($request, $rules, $messages);
+
+
+        $chanchita->name = $request->get('name');
+        $chanchita->description = $request->get('description');
+        $chanchita->day = $request->get('day');
+        $chanchita->user_id = auth()->user()->id;
+        $chanchita->password = Str::random(8);
+
+        if ($request->hasFile('url_img'))
+        {
+            $chanchita->url_img = $request->file('url_img')->store('public');
+        } 
+
+        $chanchita->save();
+
+        return back()->with('msg', 'Información actualizada correctamente');
+
+
     }
 
     /**

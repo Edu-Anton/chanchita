@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChanchitaProductTable extends Migration
+class CreateChanchitaProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateChanchitaProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('chanchita_product', function (Blueprint $table) {
+        Schema::create('chanchita_products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->double('price', 8, 2);
+            $table->string('url_img');
+            $table->smallInteger('quantity');
             $table->foreignId('chanchita_id')->constrained();
-            $table->foreignId('product_id')->constrained();
-            $table->integer('quantity');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateChanchitaProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chanchita_product');
+        Schema::dropIfExists('chanchita_products');
     }
 }

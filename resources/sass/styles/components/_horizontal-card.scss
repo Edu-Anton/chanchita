@@ -15,3 +15,21 @@
     }
   }
 }
+
+.c-hcard {
+  &__container {
+    border-bottom: 1px solid #ddd;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+  }
+  &__img {
+    max-width: 100%;
+  }
+  &__text {
+    color: #555;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
