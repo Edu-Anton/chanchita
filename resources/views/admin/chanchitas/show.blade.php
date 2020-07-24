@@ -174,7 +174,8 @@
               <span class="title__h4 title--blue">Monto por persona:</span>
               <span class="title__h4 title--dark">S/ 20</span>
             </div>
-            
+            <hr>
+            <a class="btn button__base button__blue btn-block py-3 lg mt-5" href="">Pagar Chanchita</a>
           </div>
         </div>
       </div>

@@ -1,0 +1,17 @@
+.authbox {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  // outline: 1px solid green;
+  &__bg {
+    flex-basis: 50%;
+    min-height: 400px;
+    background-size: cover;
+    background-position: left center;
+    // border: 1px solid red;
+  }
+  &__content {
+    flex-basis: 60%;
+    padding: 70px 30px;
+  }
+}
